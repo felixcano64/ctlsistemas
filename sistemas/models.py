@@ -16,7 +16,6 @@ class Sistema(models.Model):
         verbose_name_plural = "Sistemas"
         ordering = ['nombre']
 
-
     def __str__(self):
         return str(self.nombre)
     
