@@ -14,6 +14,7 @@ ESTATUS = (
     (2,"Inactivo"),
 )
 
+
 class Diagrama(models.Model):
     nombre = models.CharField("Nombre", max_length=150, null=True, blank=True)
     descripcion = models.TextField("Descripcion", null=True, blank=True)

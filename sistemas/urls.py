@@ -7,4 +7,6 @@ app_name = 'sistemas'
 
 urlpatterns = [
     path("", views.lista,name='lista'),
+    path("agregar", views.SistemaCreateView.as_view(),name='agregar'),
+    path("ok", views.ok,name='ok'),
 ]
