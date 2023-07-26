@@ -7,4 +7,6 @@ app_name = 'documentos'
 
 urlpatterns = [
     path("", views.lista, name='lista'),
+    path("agregar", views.DocumentoCreateView.as_view(),name='agregar'),
+    path("ok", views.ok,name='ok'),
 ]

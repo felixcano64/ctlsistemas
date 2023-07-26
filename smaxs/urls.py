@@ -7,4 +7,7 @@ app_name = 'smaxs'
 
 urlpatterns = [
     path("", views.lista,name='lista'),
+    path("agregar", views.SmaxCreateView.as_view(),name='agregar'),
+    path("ok", views.ok,name='ok'),
+
 ]

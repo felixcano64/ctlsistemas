@@ -7,4 +7,7 @@ app_name = 'diagramas'
 
 urlpatterns = [
     path("", views.lista, name='lista'),
+    path("agregar", views.DiagramaCreateView.as_view(),name='agregar'),
+    path("ok", views.ok,name='ok'),
+
 ]

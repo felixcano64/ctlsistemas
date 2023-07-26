@@ -13,7 +13,6 @@ class Smax(models.Model):
     numero = models.CharField("Numero", max_length=10, null=True, blank=True)
     descripcion = models.TextField("Descripcion", null=True, blank=True)
     fechaCompromiso = models.DateField("Fecha Compromiso", null=True, blank=True)
-    estatus = models.IntegerField("Estatus",null=True, blank=True)
     sistema = models.ForeignKey(Sistema,  on_delete=models.CASCADE, null=False, blank=False)
     estatus = models.IntegerField("Estatus", choices = ESTATUS, default = '1')
     created_at = models.DateTimeField("Creado", auto_now_add=True)

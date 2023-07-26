@@ -7,4 +7,7 @@ app_name = 'urls'
 
 urlpatterns = [
     path("", views.lista,name='lista'),
+    path("agregar", views.UrlCreateView.as_view(),name='agregar'),
+    path("ok", views.ok,name='ok'),
+
 ]
