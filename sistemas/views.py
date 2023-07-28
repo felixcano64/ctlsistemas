@@ -1,21 +1,21 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView, UpdateView
 
 from sistemas.models import Sistema
 from .forms import SistemaForm
 
 # Create your views here.
 
-def lista(request):
+# def lista(request):
     
-    sistemas = Sistema.objects.order_by('id').all()
-    context = {
-        'sistemas' : sistemas
-    }
+#     sistemas = Sistema.objects.order_by('id').all()
+#     context = {
+#         'sistemas' : sistemas
+#     }
     
-    return render(request,'sistemas/lista.html', context=context)
+#     return render(request,'sistemas/lista.html', context=context)
 
 
 # def agregar(request):
@@ -43,3 +43,13 @@ class SistemaCreateView(CreateView):
     #template_name = "TEMPLATE_NAME"
     #fields="__all__"
     success_url = reverse_lazy('sistemas:ok')
+
+class SistemaListView(ListView):
+      model = Sistema
+      queryset=Sistema.objects.order_by("nombre")
+      context_object_name = "sistemas"
+
+class SistemaConsultaView(UpdateView):
+    model = Sistema
+    form_class = SistemaForm
+    template_name = "sistemas/SistemaCons_form.html"

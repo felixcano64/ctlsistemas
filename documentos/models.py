@@ -25,7 +25,7 @@ class Documento(models.Model):
     path= models.CharField("Path", max_length=200, null=True, blank=True)
     tipo = models.IntegerField("Tipo", choices = TIPO, default = '1'  )
     estatus = models.IntegerField("Estatus", choices = ESTATUS, default = '1')
-    sistema = models.ForeignKey(Sistema,  on_delete=models.CASCADE, null=False, blank=False)
+    sistema = models.ForeignKey(Sistema,  on_delete=models.CASCADE, default = '1')
     created_at = models.DateTimeField("Creado", auto_now_add=True)
     updated_at = models.DateTimeField("modificado", auto_now=True)
     

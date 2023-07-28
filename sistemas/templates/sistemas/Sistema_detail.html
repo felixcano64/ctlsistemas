@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contenido %}
+<br>
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Agregar Sistemas</span>
+    </h4>
+
+    <!-- Basic Layout -->
+    <div class="row">
+
+        <div class="col-xl-7">
+            <div class="card mb-4">
+                <div class="card-body">
+
+                    <p>Nobre: <strong> {{sistema.nombre}} </strong> </p>
+                    <p>Siglas: <strong> {{sistema.siglas}} </strong> </p>
+                    <p>Responsable: <strong> {{ sistema.responsable}} </strong> </p>
+
+                    <a href="/sistemas/">                        
+                        <button class="btn btn-primary">Regresar</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+<!-- / Content -->
+
+{% endblock contenido %}
+    

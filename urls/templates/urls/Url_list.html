@@ -10,10 +10,10 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-md-10">
-            <h5 class="card-header text-primary fw-bold">LISTA DE COMPONENTES</h5>
+            <h5 class="card-header text-primary fw-bold">LISTA DE URLS</h5>
         </div>
         <div class="col-md-2">
-            <a href="{% url 'componentes:agregar' %}">
+            <a href="{% url 'urls:agregar' %}">
                 <button class="btn btn-primary">Agregar</button>
             </a>
         </div>
@@ -26,11 +26,8 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Nombre</th>
-                        <th>Version</th>
-                        <th>Tipo</th>
+                        <th>Url Interna</th>
                         <th>Sistema</th>
-                        <th>servidor</th>
                         <th>Estatus</th>
                         <th>Actions</th>
                     </tr>
@@ -38,17 +35,16 @@
 
                 <tbody class="table-border-bottom-0">
                     
-                    {% for componente in componentes %}                        
+                    {% for url in urls %}                        
                     <tr>
-                        <td>{{componente.id}}</td>
+                        <td>{{url.id}}</td>
                         <td>
-                            <strong>{{componente.nombreLargo}}</strong>
+                            <a href="consulta/{{url.id}}">
+                                <strong>{{url.urlInterna}}</strong>
+                            </a>
                         </td>
-                        <td>{{componente.version}}</td>
-                        <td>{{componente.get_tipo_display}}</td>
-                        <td>{{componente.sistema.siglas}}</td>
-                        <td>{{componente.servidor}}</td> 
-                        <td>{{componente.get_estatus_display}}</td>
+                        <td>{{url.sistema.siglas}}</td>
+                        <td>{{url.get_estatus_display}}</td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

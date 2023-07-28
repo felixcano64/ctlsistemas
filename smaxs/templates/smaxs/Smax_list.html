@@ -10,10 +10,10 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-md-10">
-            <h5 class="card-header text-primary fw-bold">LISTA DE SERVIDORES</h5>
+            <h5 class="card-header text-primary fw-bold">LISTA DE SMAXS</h5>
         </div>
         <div class="col-md-2">
-            <a href="{% url 'servidores:agregar' %}">
+            <a href="{% url 'smaxs:agregar' %}">
                 <button class="btn btn-primary">Agregar</button>
             </a>
         </div>
@@ -26,27 +26,27 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Nombre</th>
-                        <th>IP</th>
-                        <th>TIPO</th>
-                        <th>AMBIENTE</th>
-                        <th>SO</th>
+                        <th>Numero</th>
+                        <th>fecha Compromiso</th>
+                        <th>Sistema</th>
+                        <th>Estatus</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
 
                 <tbody class="table-border-bottom-0">
-
-                    {% for servidor in servidores %}
+                    
+                    {% for smax in smaxs %}                        
                     <tr>
-                        <td>{{servidor.id}}</td>
+                        <td>{{smax.id}}</td>
                         <td>
-                            <strong>{{servidor.nombre}}</strong>
+                            <a href="consulta/{{smax.id}}">
+                                <strong>{{smax.numero}}</strong>
+                            </a>
                         </td>
-                        <td>{{servidor.ip}}</td>
-                        <td>{{servidor.get_tipo_display}}</td>
-                        <td>{{servidor.get_ambiente_display}}</td>
-                        <td>{{servidor.get_so_display}}</td>
+                        <td>{{smax.fechaCompromiso}}</td>
+                        <td>{{smax.sistema.siglas}}</td>
+                        <td>{{smax.get_estatus_display}}</td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -70,6 +70,8 @@
         </div>
     </div>
     <!--/ Striped Rows -->
+
+
 
 </div>
 

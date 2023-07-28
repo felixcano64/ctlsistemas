@@ -26,9 +26,9 @@ class Componente(models.Model):
     version= models.CharField("Version", max_length=50, null=True, blank=True)
     tipo = models.IntegerField("Tipo", choices = TIPO, default = '1'  )
     estatus = models.IntegerField("Estatus", choices = ESTATUS, default = '1')
-    sistema = models.ForeignKey(Sistema,  on_delete=models.CASCADE, null=False, blank=False) 
-    servidor = models.ForeignKey(Servidor,  on_delete=models.CASCADE, null=False, blank=False)    
-    database = models.ForeignKey(Database,  on_delete=models.CASCADE, null=False, blank=False)    
+    sistema = models.ForeignKey(Sistema,  on_delete=models.CASCADE,  default = '1') 
+    servidor = models.ForeignKey(Servidor,  on_delete=models.CASCADE,  default = '1')    
+    database = models.ForeignKey(Database,  on_delete=models.CASCADE,  default = '1')    
     created_at = models.DateTimeField("Creado", auto_now_add=True)
     updated_at = models.DateTimeField("modificado", auto_now=True)
 

@@ -9,7 +9,7 @@ class Database(models.Model):
     usuario = models.CharField("Usuario", max_length=30, null=True, blank=True)
     password = models.CharField("Password", max_length=30, null=True, blank=True)
     puerto = models.CharField("Puerto", max_length=6, null=True, blank=True)
-    servidor = models.ForeignKey(Servidor,  on_delete=models.CASCADE, null=False, blank=False)
+    servidor = models.ForeignKey(Servidor,  on_delete=models.CASCADE,  default = '1')
     created_at = models.DateTimeField("Creado", auto_now_add=True)
     updated_at = models.DateTimeField("modificado", auto_now=True)
 

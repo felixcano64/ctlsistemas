@@ -10,10 +10,10 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-md-10">
-            <h5 class="card-header text-primary fw-bold">LISTA DE SISTEMAS</h5>
+            <h5 class="card-header text-primary fw-bold">LISTA DE DIAGRAMAS</h5>
         </div>
         <div class="col-md-2">
-            <a href="{% url 'sistemas:agregar' %}">
+            <a href="{% url 'diagramas:agregar' %}">
                 <button class="btn btn-primary">Agregar</button>
             </a>
         </div>
@@ -27,23 +27,24 @@
                     <tr>
                         <th>id</th>
                         <th>Nombre</th>
-                        <th>siglas</th>
-                        <th>Responsable</th>
+                        <th>Tipo</th>
+                        <th>Estatus</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
 
                 <tbody class="table-border-bottom-0">
                     
-                    {% for sistema in sistemas %}                        
+                    {% for diagrama in diagramas %}                        
                     <tr>
-                        <td>{{sistema.id}}</td>
+                        <td>{{diagrama.id}}</td>
                         <td>
-                            <strong>{{sistema.nombre}}</strong>
+                            <a href="consulta/{{diagrama.id}}">
+                                <strong>{{diagrama.nombre}}</strong>
+                            </a>
                         </td>
-                        <td>{{sistema.siglas}}</td>
-                        <td>{{sistema.responsable}}</td>
-
+                        <td>{{diagrama.get_tipo_display}}</td>
+                        <td>{{diagrama.get_estatus_display}}</td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

@@ -6,8 +6,9 @@ from . import views
 app_name = 'databases'
 
 urlpatterns = [
-    path("", views.lista, name='lista'),
+    path("", views.DatabaseListView.as_view(), name='lista'),
     path("agregar", views.DatabaseCreateView.as_view(),name='agregar'),
+    path("consulta/<int:pk>", views.DatabaseConsultaView.as_view(),name='consulta'),
     path("ok", views.ok,name='ok'),
 ]
 

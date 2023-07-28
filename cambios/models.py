@@ -31,8 +31,8 @@ class Cambio(models.Model):
     aplico = models.CharField("Quin Aplico", max_length=150, null=True, blank=True)
     resultado = models.IntegerField("Resultado", choices = RESULTADO, default = '1'  )
     observacion = models.TextField("Observaciones", null=True, blank=True)
-    componente = models.ForeignKey(Componente,  on_delete=models.CASCADE, null=False, blank=False)
-    smax = models.ForeignKey(Smax,  on_delete=models.CASCADE, null=False, blank=False)  
+    componente = models.ForeignKey(Componente,  on_delete=models.CASCADE,  default = '1')
+    smax = models.ForeignKey(Smax,  on_delete=models.CASCADE,  default = '1')  
     created_at = models.DateTimeField("Creado", auto_now_add=True)
     updated_at = models.DateTimeField("modificado", auto_now=True) 
 
