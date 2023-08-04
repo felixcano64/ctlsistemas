@@ -17,6 +17,7 @@ class UrlForm(ModelForm):
             "sistema": forms.Select(attrs={"class":"form-select"}),
             "servidor": forms.Select(attrs={"class":"form-select"}),     
             "estatus": forms.Select(attrs={"class":"form-select"}),
+            "tipo": forms.Select(attrs={"class":"form-select"}),
     
         }
 

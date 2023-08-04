@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from databases.forms import DatabaseForm
 from databases.models import Database
 
@@ -11,17 +13,32 @@ from databases.models import Database
 def ok(request):
  	 return render(request,'databases/ok.html')
 
-class DatabaseCreateView(CreateView):
+class DatabaseCreateView(LoginRequiredMixin, CreateView):
     model = Database
     form_class = DatabaseForm
     success_url = reverse_lazy('databases:ok')
 
-class DatabaseListView(ListView):
+class DatabaseListView(LoginRequiredMixin, ListView):
       model = Database
       queryset=Database.objects.order_by("nombre")
       context_object_name = "databases"
 
-class DatabaseConsultaView(UpdateView):
+      def get_queryset(self):
+        buscar = self.request.GET.get("buscar")
+
+        if buscar:
+             resultado = Database.objects.filter(nombre__icontains=buscar)
+        else:
+             resultado = Database.objects.all()
+
+        return resultado
+
+class DatabaseConsultaView(LoginRequiredMixin, UpdateView):
     model = Database
     form_class = DatabaseForm
     template_name = "databases/DatabaseCons_form.html"
+
+class DatabaseUpdateView(LoginRequiredMixin, UpdateView):
+    model = Database
+    form_class = DatabaseForm
+    success_url = reverse_lazy('database:lista')

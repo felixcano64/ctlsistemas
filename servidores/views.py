@@ -2,8 +2,10 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView,ListView,UpdateView
-from servidores.forms import ServidorForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from servidores.forms import ServidorForm
 from servidores.models import Servidor
 
 
@@ -13,17 +15,32 @@ def ok(request):
  	 return render(request,'servidores/ok.html')
 
 
-class ServidorCreateView(CreateView):
+class ServidorCreateView(LoginRequiredMixin, CreateView):
     model = Servidor
     form_class = ServidorForm
     success_url = reverse_lazy('servidores:ok')
 
-class ServidorListView(ListView):
+class ServidorListView(LoginRequiredMixin, ListView):
       model = Servidor
       queryset=Servidor.objects.order_by("nombre","ip")
       context_object_name = "servidores"
 
-class ServidorConsultaView(UpdateView):
+      def get_queryset(self):
+        buscar = self.request.GET.get("buscar")
+
+        if buscar:
+             resultado = Servidor.objects.filter(nombre__icontains=buscar)
+        else:
+             resultado = Servidor.objects.all()
+
+        return resultado
+
+class ServidorConsultaView(LoginRequiredMixin, UpdateView):
     model = Servidor
     form_class = ServidorForm
     template_name = "servidores/ServidorCons_form.html"
+
+class ServidorUpdateView(LoginRequiredMixin, UpdateView):
+    model = Servidor
+    form_class = ServidorForm
+    success_url = reverse_lazy('servidores:lista')

@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from django.views.generic import RedirectView
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("cambios/",include('cambios.urls')),
@@ -29,5 +31,8 @@ urlpatterns = [
     path("sistemas/",include('sistemas.urls')),
     path("smaxs/",include('smaxs.urls')),
     path("urls/",include('urls.urls')),
+    path("",RedirectView.as_view(url="sistemas/")),
+
+    path("accounts/", include('django.contrib.auth.urls'))
 
 ]

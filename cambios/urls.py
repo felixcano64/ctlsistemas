@@ -8,6 +8,7 @@ app_name = 'cambios'
 urlpatterns = [
     path("", views.CambioListView.as_view(),name='lista'),
     path("agregar", views.CambioCreateView.as_view(),name='agregar'),
-    path("consulta/<int:pk>", views.CambioConsultaView.as_view(),name='consulta'),
+    path("consulta/<int:pk>", views.CambioConsultaView.as_view(),name='consulta'),    
+    path("editar/<int:pk>", views.CambioUpdateView.as_view(),name='editar'),
     path("ok", views.ok,name='ok'),
 ]

@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.UrlListView.as_view(),name='lista'),
     path("agregar", views.UrlCreateView.as_view(),name='agregar'),
     path("consulta/<int:pk>", views.UrlConsultaView.as_view(),name='consulta'),
+    path("editar/<int:pk>", views.UrlUpdateView.as_view(),name='editar'),
     path("ok", views.ok,name='ok'),
 
 ]

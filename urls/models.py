@@ -12,11 +12,18 @@ ESTATUS = (
     (2,"Inactivo"),
 )
 
+TIPO = (
+    (1,"Interna"),
+    (2,"Externa"),
+    (3,"PI-PO"),
+    (4,"DataPower")
+)
 
 class Url(models.Model):
     urlInterna = models.CharField("Url Interna", max_length=250, null=True, blank=True)
     urlExterna = models.CharField("Url Externa", max_length=250, null=True, blank=True)
     descripcion = models.TextField("Descripcion", null=True, blank=True)
+    tipo = models.IntegerField("Tipo", choices = TIPO, default = '1')
     estatus = models.IntegerField("Estatus", choices = ESTATUS, default = '1')
     componente = models.ForeignKey(Componente,  on_delete=models.CASCADE,  default = '1')     
     sistema = models.ForeignKey(Sistema,  on_delete=models.CASCADE, default = '1' )       

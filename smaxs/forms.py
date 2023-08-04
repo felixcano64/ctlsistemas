@@ -16,6 +16,7 @@ class SmaxForm(ModelForm):
             "numero": forms.TextInput(attrs={"class":"form-control"}),
             "descripcion": forms.Textarea(attrs={'class':'form-control', 'rows':3, 'cols':50 }),
             "fechaCompromiso": DateTimeInput(),
+            "tipo": forms.Select(attrs={"class":"form-select"}),
             "sistema": forms.Select(attrs={"class":"form-select"}),
             "estatus": forms.Select(attrs={"class":"form-select"}),
         }

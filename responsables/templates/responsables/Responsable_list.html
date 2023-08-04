@@ -12,11 +12,26 @@
         <div class="col-md-10">
             <h5 class="card-header text-primary fw-bold">LISTA DE RESPONSABLES</h5>
         </div>
-        <div class="col-md-2">
-            <a href="{% url 'responsables:agregar' %}">
-                <button class="btn btn-primary">Agregar</button>
-            </a>
-        </div>
+
+        <!-- busquedas en las listas  -->
+        <form action="" method="GET">
+            <div class="row d-flex flex-row align-items-baseline">
+                <div class="col-md-8 d-flex flex-row align-items-baseline border rounded border-light m-3 p-2">
+                    <i class="bx bx-search fs-4 lh-0 "></i>
+                    <input type="text" class="form-control" name="buscar" value="{{request.GET.buscar}}"
+                        placeholder="Buscar..." autocomplete="off">
+                    <input type="submit" class="btn btn-primary m-2" value="Buscar">
+                    <a href="{% url 'responsables:lista' %}" class="btn btn-primary m-1">Limpiar</a>
+                </div>
+
+                <div class="col-md-2">
+                    <a href="{% url 'responsables:agregar' %}" class="btn btn-primary">Agregar</a>
+                </div>
+
+            </div>
+        </form>
+        <!-- fin de busquedas en las listas -->
+
     </div>
 
     <!-- Striped Rows -->
@@ -40,7 +55,8 @@
                         <td>{{responsable.id}}</td>
                         <td>
                             <a href="consulta/{{responsable.id}}">
-                                <strong>{{responsable.nombre}} {{responsable.apPaterno}} {{responsable.apMaterno}}</strong>
+                                <strong>{{responsable.nombre}} {{responsable.apPaterno}}
+                                    {{responsable.apMaterno}}</strong>
                             </a>
                         </td>
                         <td>{{responsable.area}}</td>
@@ -52,8 +68,8 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);">
-                                        <i class="bx bx-edit-alt me-1"></i>
+                                    <a class="dropdown-item" href="editar/{{responsable.id}}"> <i
+                                            class="bx bx-edit-alt me-1"></i>
                                         Editar</a>
                                     <a class="dropdown-item" href="javascript:void(0);">
                                         <i class="bx bx-trash me-1"></i>

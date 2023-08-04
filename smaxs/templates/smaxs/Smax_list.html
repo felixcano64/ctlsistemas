@@ -12,11 +12,26 @@
         <div class="col-md-10">
             <h5 class="card-header text-primary fw-bold">LISTA DE SMAXS</h5>
         </div>
-        <div class="col-md-2">
-            <a href="{% url 'smaxs:agregar' %}">
-                <button class="btn btn-primary">Agregar</button>
-            </a>
-        </div>
+
+        <!-- busquedas en las listas  -->
+        <form action="" method="GET">
+            <div class="row d-flex flex-row align-items-baseline">
+                <div class="col-md-8 d-flex flex-row align-items-baseline border rounded border-light m-3 p-2">
+                    <i class="bx bx-search fs-4 lh-0 "></i>
+                    <input type="text" class="form-control" name="buscar" value="{{request.GET.buscar}}"
+                        placeholder="Buscar..." autocomplete="off">
+                    <input type="submit" class="btn btn-primary m-2" value="Buscar">
+                    <a href="{% url 'smaxs:lista' %}" class="btn btn-primary m-1">Limpiar</a>
+                </div>
+
+                <div class="col-md-2">
+                    <a href="{% url 'smaxs:agregar' %}" class="btn btn-primary">Agregar</a>
+                </div>
+
+            </div>
+        </form>
+        <!-- fin de busquedas en las listas -->
+
     </div>
 
     <!-- Striped Rows -->
@@ -27,7 +42,8 @@
                     <tr>
                         <th>id</th>
                         <th>Numero</th>
-                        <th>fecha Compromiso</th>
+                        <th>Fecha Compromiso</th>
+                        <th>Tipo</th>
                         <th>Sistema</th>
                         <th>Estatus</th>
                         <th>Actions</th>
@@ -35,8 +51,8 @@
                 </thead>
 
                 <tbody class="table-border-bottom-0">
-                    
-                    {% for smax in smaxs %}                        
+
+                    {% for smax in smaxs %}
                     <tr>
                         <td>{{smax.id}}</td>
                         <td>
@@ -45,6 +61,7 @@
                             </a>
                         </td>
                         <td>{{smax.fechaCompromiso}}</td>
+                        <td>{{smax.get_tipo_display}}</td>
                         <td>{{smax.sistema.siglas}}</td>
                         <td>{{smax.get_estatus_display}}</td>
                         <td>
@@ -54,7 +71,7 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);">
+                                    <a class="dropdown-item" href="editar/{{smax.id}}">
                                         <i class="bx bx-edit-alt me-1"></i>
                                         Editar</a>
                                     <a class="dropdown-item" href="javascript:void(0);">

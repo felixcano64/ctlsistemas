@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.ServidorListView.as_view(), name='lista'),
     path("agregar", views.ServidorCreateView.as_view(),name='agregar'),
     path("consulta/<int:pk>", views.ServidorConsultaView.as_view(),name='consulta'),
+    path("editar/<int:pk>", views.ServidorUpdateView.as_view(),name='editar'),    
     path("ok", views.ok,name='ok'),
 
 ]
