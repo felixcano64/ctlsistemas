@@ -10,7 +10,12 @@ from responsables.models import Responsable
 
 # Create your views here.
 def ok(request):
- 	 return render(request,'responsables/ok.html')
+    context = {
+        "siguiente":"/responsables/",
+        "registro":"Responsable"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class ResponsableCreateView(LoginRequiredMixin, CreateView):

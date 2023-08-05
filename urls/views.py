@@ -11,7 +11,12 @@ from urls.models import Url
 # Create your views here.
 
 def ok(request):
- 	 return render(request,'urls/ok.html')
+    context = {
+        "siguiente":"/urls/",
+        "registro":"Url"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class UrlCreateView(LoginRequiredMixin, CreateView):

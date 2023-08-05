@@ -11,7 +11,12 @@ from diagramas.models import Diagrama
 # Create your views here.
 
 def ok(request):
- 	 return render(request,'diagramas/ok.html')
+    context = {
+        "siguiente":"/diagramas/",
+        "registro":"Diagrama"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class DiagramaCreateView(LoginRequiredMixin, CreateView):

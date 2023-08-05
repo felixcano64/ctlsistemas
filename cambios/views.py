@@ -11,7 +11,12 @@ from cambios.models import Cambio
 # Create your views here.
 
 def ok(request):
- 	 return render(request,'cambios/ok.html')
+    context = {
+        "siguiente":"/cambios/",
+        "registro":"Cambio"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class CambioCreateView(LoginRequiredMixin,CreateView):

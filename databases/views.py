@@ -11,7 +11,12 @@ from databases.models import Database
 # Create your views here.
 
 def ok(request):
- 	 return render(request,'databases/ok.html')
+    context = {
+        "siguiente":"/databases/",
+        "registro":"Database"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 class DatabaseCreateView(LoginRequiredMixin, CreateView):
     model = Database

@@ -11,7 +11,12 @@ from componentes.models import Componente
 # Create your views here.
 
 def ok(request):
- 	 return render(request,'componentes/ok.html')
+    context = {
+        "siguiente":"/componentes/",
+        "registro":"Componente"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class ComponenteCreateView(LoginRequiredMixin, CreateView):
@@ -43,4 +48,4 @@ class ComponenteConsultaView(LoginRequiredMixin, UpdateView):
 class ComponenteUpdateView(LoginRequiredMixin, UpdateView):
     model = Componente
     form_class = ComponenteForm
-    success_url = reverse_lazy('componente:lista')
+    success_url = reverse_lazy('componentes:lista')

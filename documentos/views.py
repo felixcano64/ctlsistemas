@@ -12,7 +12,12 @@ from documentos.models import Documento
 
 
 def ok(request):
- 	 return render(request,'documentos/ok.html')
+    context = {
+        "siguiente":"/documentos/",
+        "registro":"Documento"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class DocumentoCreateView(LoginRequiredMixin, CreateView):

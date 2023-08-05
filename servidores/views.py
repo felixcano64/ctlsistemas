@@ -12,7 +12,12 @@ from servidores.models import Servidor
 # Create your views here.
 
 def ok(request):
- 	 return render(request,'servidores/ok.html')
+    context = {
+        "siguiente":"/servidores/",
+        "registro":"Servidor"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class ServidorCreateView(LoginRequiredMixin, CreateView):

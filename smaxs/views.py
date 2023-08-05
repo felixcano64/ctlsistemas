@@ -11,7 +11,12 @@ from smaxs.models import Smax
 # Create your views here.
 
 def ok(request):
- 	 return render(request,'smaxs/ok.html')
+    context = {
+        "siguiente":"/smaxs/",
+        "registro":"Smax"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class SmaxCreateView(LoginRequiredMixin, CreateView):

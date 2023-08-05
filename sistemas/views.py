@@ -38,7 +38,12 @@ from .forms import SistemaForm
 # 	return render(request,"sistemas/agregar.html", context={ "form":form })
 
 def ok(request):
- 	 return render(request,'sistemas/ok.html')
+    context = {
+        "siguiente":"/sistemas/",
+        "registro":"Sistema"
+    }
+    
+    return render(request,'ok.html', context=context)
 
 
 class SistemaCreateView(LoginRequiredMixin,CreateView):
