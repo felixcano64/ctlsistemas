@@ -28,6 +28,7 @@ class ComponenteListView(LoginRequiredMixin, ListView):
       model = Componente
       queryset=Componente.objects.order_by("nombreCorto")
       context_object_name = "componentes"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")

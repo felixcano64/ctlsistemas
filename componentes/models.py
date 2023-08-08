@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 from databases.models import Database
 from servidores.models import Servidor
 from sistemas.models import Sistema
@@ -22,7 +24,7 @@ ESTATUS = (
 class Componente(models.Model):
     nombreCorto = models.CharField("Nombre Corto", max_length=50, null=True, blank=True)
     nombreLargo = models.CharField("Nombre Largo", max_length=150, null=True, blank=True)
-    descripcion = models.TextField("Descripcion", null=True, blank=True)
+    descripcion = RichTextField("Descripcion", null=True, blank=True)
     version= models.CharField("Version", max_length=50, null=True, blank=True)
     tipo = models.IntegerField("Tipo", choices = TIPO, default = '1'  )
     estatus = models.IntegerField("Estatus", choices = ESTATUS, default = '1')

@@ -1,10 +1,12 @@
 
 from django import forms
 from django.forms import ModelForm
+from django.contrib.admin.widgets import AdminDateWidget
+
 from .models import Cambio
 
-class DateTimeInput(forms.DateTimeInput):
-    input_type = 'date'
+# class DateTimeInput(forms.DateTimeInput):
+#     input_type = 'date'
 
 class CambioForm(ModelForm):
 
@@ -17,8 +19,8 @@ class CambioForm(ModelForm):
             "nombre": forms.TextInput(attrs={"class":"form-control"}),
             "tipo": forms.Select(attrs={"class":"form-select"}),
             "descripcion": forms.Textarea(attrs={'class':'form-control', 'rows':3, 'cols':50 }),
-            "fechaInscripcion": DateTimeInput(),
-            "fechaCambio": DateTimeInput(),
+            "fechaInscripcion": AdminDateWidget(),
+            "fechaCambio": AdminDateWidget(),
             "aplico": forms.TextInput(attrs={"class":"form-control"}),
             "resultado": forms.Select(attrs={"class":"form-select"}),
             "observacion": forms.Textarea(attrs={'class':'form-control', 'rows':3, 'cols':50 }),

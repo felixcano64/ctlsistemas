@@ -29,6 +29,7 @@ class DiagramaListView(LoginRequiredMixin, ListView):
       model = Diagrama
       queryset=Diagrama.objects.order_by("nombre")
       context_object_name = "diagramas"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")

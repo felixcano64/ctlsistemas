@@ -29,6 +29,7 @@ class ServidorListView(LoginRequiredMixin, ListView):
       model = Servidor
       queryset=Servidor.objects.order_by("nombre","ip")
       context_object_name = "servidores"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")

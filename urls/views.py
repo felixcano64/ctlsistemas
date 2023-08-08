@@ -29,6 +29,7 @@ class UrlListView(LoginRequiredMixin, ListView):
       model = Url
       queryset=Url.objects.order_by("urlInterna")
       context_object_name = "urls"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")

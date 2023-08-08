@@ -27,6 +27,7 @@ class ResponsableListView(LoginRequiredMixin, ListView):
       model = Responsable
       queryset=Responsable.objects.order_by("apPaterno","apMaterno","nombre")
       context_object_name = "responsables"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")

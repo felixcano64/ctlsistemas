@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 
 # Create your models here.
 
@@ -32,7 +34,7 @@ class Servidor(models.Model):
     so = models.IntegerField("Sistema Operetivo", choices = SO, default = '1' )
     tipo = models.IntegerField("Tipo", choices = TIPO, default = '1'  )
     ambiente = models.IntegerField("Ambiente", choices = AMBIENTE, default = '1'  )
-    descripcion = models.TextField("Descripcion", null=True, blank=True)
+    descripcion = RichTextField("Descripcion", null=True, blank=True)
     estatus = models.IntegerField("Estatus", choices = ESTATUS, default = '1')
     created_at = models.DateTimeField("Creado", auto_now_add=True)
     updated_at = models.DateTimeField("modificado", auto_now=True)

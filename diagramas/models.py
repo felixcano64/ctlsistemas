@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 from sistemas.models import Sistema
 
@@ -17,7 +18,7 @@ ESTATUS = (
 
 class Diagrama(models.Model):
     nombre = models.CharField("Nombre", max_length=150, null=True, blank=True)
-    descripcion = models.TextField("Descripcion", null=True, blank=True)
+    descripcion = RichTextField("Descripcion", null=True, blank=True)
     path = models.CharField("Path", max_length=200, null=True, blank=True)
     tipo = models.IntegerField("Tipo", choices = TIPO, default = '1'  )
     estatus = models.IntegerField("Estatus", choices = ESTATUS, default = '1')

@@ -1,5 +1,7 @@
 from django.db import models
 
+from ckeditor.fields import RichTextField
+
 from componentes.models import Componente
 from smaxs.models import Smax
 
@@ -25,12 +27,12 @@ class Cambio(models.Model):
     numero = models.CharField("Numero", max_length=10, null=True, blank=True)
     nombre = models.CharField("Nombre", max_length=150, null=True, blank=True)
     tipo = models.IntegerField("Tipo", choices = TIPO, default = '1'  )
-    descripcion = models.TextField("Descripcion", null=True, blank=True)
+    descripcion = RichTextField("Descripcion", null=True, blank=True)
     fechaInscripcion = models.DateField("Fecha de Inscripcion", null=True, blank=True)
     fechaCambio = models.DateField("Fecha del Cambio", null=True, blank=True)
-    aplico = models.CharField("Quin Aplico", max_length=150, null=True, blank=True)
+    aplico = models.CharField("Quien Aplico", max_length=150, null=True, blank=True)
     resultado = models.IntegerField("Resultado", choices = RESULTADO, default = '1'  )
-    observacion = models.TextField("Observaciones", null=True, blank=True)
+    observacion = RichTextField("Observaciones", null=True, blank=True)
     componente = models.ForeignKey(Componente,  on_delete=models.CASCADE,  default = '1')
     smax = models.ForeignKey(Smax,  on_delete=models.CASCADE,  default = '1')  
     created_at = models.DateTimeField("Creado", auto_now_add=True)

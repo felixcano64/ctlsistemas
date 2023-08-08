@@ -29,6 +29,7 @@ class DocumentoListView(LoginRequiredMixin, ListView):
       model = Documento
       queryset=Documento.objects.order_by("nombre")
       context_object_name = "documentos"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")

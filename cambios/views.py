@@ -27,6 +27,7 @@ class CambioCreateView(LoginRequiredMixin,CreateView):
 class CambioListView(LoginRequiredMixin,ListView):
       model = Cambio
       queryset=Cambio.objects.order_by("numero")
+      paginate_by = 5
       context_object_name = "cambios"
 
       def get_queryset(self):

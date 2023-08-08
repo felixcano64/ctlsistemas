@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 from sistemas.models import Sistema
 
@@ -16,7 +17,8 @@ TIPO = (
 
 class Smax(models.Model):
     numero = models.CharField("Numero", max_length=10, null=True, blank=True)
-    descripcion = models.TextField("Descripcion", null=True, blank=True)
+    nombre = models.CharField("nombre", max_length=80, null=True, blank=True, default="")
+    descripcion = RichTextField("Descripcion", null=True, blank=True)
     fechaCompromiso = models.DateField("Fecha Compromiso", null=True, blank=True)
     tipo = models.IntegerField("Tipo", choices = TIPO, default = '1')
     sistema = models.ForeignKey(Sistema,  on_delete=models.CASCADE, default = '1')
@@ -30,5 +32,5 @@ class Smax(models.Model):
         ordering = ['numero']
 
     def __str__(self):
-        return self.numero + " " + self.descripcion
+        return self.numero + " " + self.nombre
 

@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "smaxs.apps.SmaxsConfig",
     "urls.apps.UrlsConfig",
 
+    "ckeditor",
+
 ]
 
 MIDDLEWARE = [

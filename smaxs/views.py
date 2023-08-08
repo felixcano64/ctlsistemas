@@ -29,6 +29,7 @@ class SmaxListView(LoginRequiredMixin, ListView):
       model = Smax
       queryset=Smax.objects.order_by("numero")
       context_object_name = "smaxs"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")

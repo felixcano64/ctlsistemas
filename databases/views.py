@@ -27,6 +27,7 @@ class DatabaseListView(LoginRequiredMixin, ListView):
       model = Database
       queryset=Database.objects.order_by("nombre")
       context_object_name = "databases"
+      paginate_by = 3
 
       def get_queryset(self):
         buscar = self.request.GET.get("buscar")
