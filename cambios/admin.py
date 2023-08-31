@@ -1,10 +1,24 @@
 from django.contrib import admin
 
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
 from .models import Cambio
 
 # Register your models here.
+class CambioResourse(resources.ModelResource):
+    
+    fields = ('__all__')
 
-class CambioAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Cambio
+        exclude = ('created_at','updated_at',)
+
+
+class CambioAdmin(ImportExportModelAdmin):
+
+    resource_class = CambioResourse
+
     list_display = (
         'id',
         'numero',

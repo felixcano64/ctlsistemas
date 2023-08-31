@@ -1,3 +1,5 @@
+from typing import Any
+from django.db import models
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -5,8 +7,10 @@ from django.views.generic import CreateView,ListView,UpdateView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from documentos.forms import DocumentoForm
+from documentos.forms import DocumentoForm,ConsultaDocumentoForm
 from documentos.models import Documento
+
+import os.path
 
 # Create your views here.
 
@@ -41,10 +45,30 @@ class DocumentoListView(LoginRequiredMixin, ListView):
 
         return resultado
 
+
 class DocumentoConsultaView(LoginRequiredMixin, UpdateView):
     model = Documento
-    form_class = DocumentoForm
+    form_class = ConsultaDocumentoForm
     template_name = "documentos/DocumentoCons_form.html"
+
+    def get_context_data(self, **kwargs):
+
+        llave = self.kwargs['pk']
+
+        doc = Documento.objects.get(id=llave)
+        archivo = doc.archivo
+
+        if archivo :
+            ext = os.path.splitext(archivo.name)[1]
+        else:
+            ext = ""
+
+        context = super().get_context_data(**kwargs)
+        context["tipo_archivo"] = ext
+        context["id"] = llave
+        context["archivo"] = archivo
+
+        return context
 
 class DocumentoUpdateView(LoginRequiredMixin, UpdateView):
     model = Documento

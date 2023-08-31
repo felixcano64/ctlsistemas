@@ -1,10 +1,24 @@
 from django.contrib import admin
 
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
 from .models import Url
 
 # Register your models here.
 
-class UrlAdmin(admin.ModelAdmin):
+class UrlResourse(resources.ModelResource):
+    
+    fields = ('__all__')
+
+    class Meta:
+        model = Url
+        exclude = ('created_at','updated_at',)
+
+
+class UrlAdmin(ImportExportModelAdmin):
+    resource_class = UrlResourse
+
     list_display = (
         'id',
         'urlInterna',

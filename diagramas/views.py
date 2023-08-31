@@ -5,8 +5,10 @@ from django.views.generic import CreateView,ListView,UpdateView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from diagramas.forms import DiagramaForm
+from diagramas.forms import DiagramaForm, ConsultaDiagramaForm
 from diagramas.models import Diagrama
+
+import os.path
 
 # Create your views here.
 
@@ -43,8 +45,28 @@ class DiagramaListView(LoginRequiredMixin, ListView):
 
 class DiagramaConsultaView(LoginRequiredMixin, UpdateView):
     model = Diagrama
-    form_class = DiagramaForm
+    form_class = ConsultaDiagramaForm
     template_name = "diagramas/DiagramaCons_form.html"
+
+    def get_context_data(self, **kwargs):
+
+        llave = self.kwargs['pk']
+
+        doc = Diagrama.objects.get(id=llave)
+        archivo = doc.archivo
+
+        if archivo :
+            ext = os.path.splitext(archivo.name)[1]
+        else:
+            ext = ""
+
+        context = super().get_context_data(**kwargs)
+        context["tipo_archivo"] = ext
+        context["id"] = llave
+        context["archivo"] = archivo
+
+        return context
+
 
 class DiagramaUpdateView(LoginRequiredMixin, UpdateView):
     model = Diagrama

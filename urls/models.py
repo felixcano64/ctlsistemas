@@ -17,7 +17,8 @@ TIPO = (
     (1,"Interna"),
     (2,"Externa"),
     (3,"PI-PO"),
-    (4,"DataPower")
+    (4,"DataPower"),
+    (5,"ESB")
 )
 
 class Url(models.Model):

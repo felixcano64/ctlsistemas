@@ -19,7 +19,7 @@
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.media }}
                         {% for field in form %}

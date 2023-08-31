@@ -55,7 +55,7 @@ class SistemaCreateView(LoginRequiredMixin,CreateView):
 
 class SistemaListView(LoginRequiredMixin,ListView):
       model = Sistema
-      paginate_by = 5 
+      paginate_by = 3 
       context_object_name = "sistemas"
 
       def get_queryset(self):

@@ -19,16 +19,29 @@
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.media }}
+
                         {% for field in form %}
-                        <div class="mb-3">
+                        <div class="mb-3">                            
                             <p>{{field.label_tag}}</p>
                             <p>{{field}}</p>
                         </div>
                         {% endfor %}
                         <a href="/documentos/" class="btn btn-danger">Cancelar</a>
+                        
+                        {% if tipo_archivo != "" %}
+                                
+                            <a href="/documentos/" class="btn btn btn-primary">Descargae Documento</a>
+                            
+                            {% if tipo_archivo  == '.pdf' %}
+                                <a href="{{ archivo.url }}" class="btn btn-primary">Ver Documento</a>                            
+                            {% endif %}
+                            
+                        {% endif %}
+                            
+
                     </form>
 
                 </div>

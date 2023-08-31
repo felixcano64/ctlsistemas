@@ -11,7 +11,9 @@ TIPO = (
     (1, "Programa"),
     (2, "Web Services"),
     (3, "Api"),
-    (4,"Scipt")
+    (4,"Scipt"),
+    (5,"FA")
+
 )
 
 ESTATUS = (

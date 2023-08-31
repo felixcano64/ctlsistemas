@@ -12,9 +12,25 @@ class DiagramaForm(ModelForm):
         widgets={
             "nombre": forms.TextInput(attrs={"class":"form-control"}),
             "descripcion": forms.Textarea(attrs={'class':'form-control', 'rows':3, 'cols':50 }),
-            "path": forms.TextInput(attrs={"class":"form-control"}),
+            "archivo" : forms.ClearableFileInput(attrs={"class":"form-control"}),
             "tipo": forms.Select(attrs={"class":"form-select"}),
             "estatus": forms.Select(attrs={"class":"form-select"}),
             "sistema": forms.Select(attrs={"class":"form-select"}),
         }
+
+
+class ConsultaDiagramaForm(ModelForm):
+
+    class Meta:
+        model = Diagrama
+        fields = ["nombre","descripcion","tipo","estatus","sistema"]
+
+        widgets={
+            "nombre": forms.TextInput(attrs={"class":"form-control", "disabled":True }),
+            "descripcion": forms.Textarea(attrs={'class':'form-control', 'rows':3, 'cols':50 ,  "disabled":True }),
+            "tipo": forms.Select(attrs={"class":"form-select", "disabled":True}),
+            "estatus": forms.Select(attrs={"class":"form-select", "disabled":True }),
+            "sistema": forms.Select(attrs={"class":"form-select", "disabled":True }),
+        }
+
 

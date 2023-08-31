@@ -22,6 +22,7 @@
                     <form method="post">
                         {% csrf_token %}
                         {{ form.media }}
+
                         {% for field in form %}
                         <div class="mb-3">
                             <p>{{field.label_tag}}</p>
@@ -29,6 +30,17 @@
                         </div>
                         {% endfor %}
                         <a href="/diagramas/" class="btn btn-danger">Cancelar</a>
+
+                        {% if tipo_archivo != "" %}
+                                
+                            <a href="/diagramas/" class="btn btn btn-primary">Descargae Diagrama</a>
+                            
+                            {% if tipo_archivo  == '.pdf' %}
+                                <a href="{{ archivo.url }}" class="btn btn-primary">Ver Diagrama</a>                            
+                            {% endif %}
+                        
+                        {% endif %}
+
                     </form>
 
                 </div>
